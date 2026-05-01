@@ -20,12 +20,11 @@ public class FarmService {
     private final CropRecordRepository cropRecordRepository;
 
     public FarmAccount createAccount(FarmAccountRequest request) {
-        FarmAccount account = FarmAccount.builder()
-                .farmerName(request.farmerName())
-                .email(request.email())
-                .farmName(request.farmName())
-                .location(request.location())
-                .build();
+        FarmAccount account = new FarmAccount();
+        account.setFarmerName(request.farmerName());
+        account.setEmail(request.email());
+        account.setFarmName(request.farmName());
+        account.setLocation(request.location());
         return farmAccountRepository.save(account);
     }
 
@@ -37,13 +36,12 @@ public class FarmService {
         FarmAccount account = farmAccountRepository.findById(accountId)
                 .orElseThrow(() -> new IllegalArgumentException("Account not found: " + accountId));
 
-        CropRecord record = CropRecord.builder()
-                .farmAccount(account)
-                .cropName(request.cropName())
-                .expense(request.expense())
-                .revenue(request.revenue())
-                .recordDate(request.recordDate())
-                .build();
+        CropRecord record = new CropRecord();
+        record.setFarmAccount(account);
+        record.setCropName(request.cropName());
+        record.setExpense(request.expense());
+        record.setRevenue(request.revenue());
+        record.setRecordDate(request.recordDate());
 
         return cropRecordRepository.save(record);
     }
