@@ -20,6 +20,11 @@ import java.util.Map;
 public class FarmController {
 
     private final FarmService farmService;
+    public FarmController(FarmService farmService) {
+        this.farmService = farmService;
+    }
+    
+    
 
     @PostMapping
     public FarmAccount createAccount(@Valid @RequestBody FarmAccountRequest request) {

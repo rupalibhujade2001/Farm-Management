@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class CropRecord {
     @Id
@@ -13,6 +15,7 @@ public class CropRecord {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "farm_account_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private FarmAccount farmAccount;
 
     @Column(nullable = false)

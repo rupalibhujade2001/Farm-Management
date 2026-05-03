@@ -16,7 +16,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FarmService {
 
-    private final FarmAccountRepository farmAccountRepository;
+    public FarmService(FarmAccountRepository farmAccountRepository, CropRecordRepository cropRecordRepository) {
+		super();
+		this.farmAccountRepository = farmAccountRepository;
+		this.cropRecordRepository = cropRecordRepository;
+	}
+
+	private final FarmAccountRepository farmAccountRepository;
     private final CropRecordRepository cropRecordRepository;
 
     public FarmAccount createAccount(FarmAccountRequest request) {
